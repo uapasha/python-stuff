@@ -1,2 +1,17 @@
-# django-stuff
-Miscellaneous small django projects (trivial sites, examples etc.)
+# Homework7
+REST API (серверная и клиентская часть)
+## API app
+Суть: вынести следующую функциональность в вызов удаленных процедур (Remote Procedure Call / RPC) с помощью HTTP/JSON REST API:
+- получение списка персон
+- добавление персоны
+- удаление персоны по подстроке из шорт нейм
+Что нужно сделать:
+  Обработать УРЛы новыми вьюхами, которые ну будт рендерить .html тимплейты, а будут возвращать JSON:
+- /api/list_persons (GET запрос, без параметров)
+- /api/add_person (POST запрос, параметры с описанием персоны)
+- /api/delete_person (DELETE запрос, параметр - подстрока из шорт нейм)
+  Написать клиентский скрипт, где будут функции:
+- list_persons
+- add_person
+- delete_person
+-   Функции должны принимать соответствующие параметры, которые будут передаваться в data вызовов requests.get, requests.post, requests.delete
