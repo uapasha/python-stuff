@@ -1,0 +1,6 @@
+{% extends '_layouts/base.html' %}
+{% load url from future %}
+
+{% block page_content %}
+<a href="{% url 'blog:list' %}" class = 'btn btn-default'>Read my blog</a>
+{% endblock %}

@@ -1,0 +1,3 @@
+*.pyc
+microblog/settings/local.py
+.sqlite3

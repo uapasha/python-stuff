@@ -1,0 +1,76 @@
+{% extends '_layouts/base.html' %}
+
+<div class = 'comtainer'>
+{% load url from future %}
+
+{% block page_title %}{{post.title}} | {% endblock %}
+
+{% block page_content %}
+<h2>{{ post.title }}</h2>
+{{ post.content|linebreaks }}
+<p>{{ post.updated_at }}</p>
+
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}><h3>{{ message }}</h3></li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+<h4>Comment it!</h4>
+
+<form action = "{% url  'blog:add_comment' %}" method = 'post' >
+{% csrf_token %}
+<textarea name= 'separate_page_message' cols = '70' >Write here..</textarea>
+<select class = 'postSelector' name = 'post'>
+    <option value = '{{ post.pk }}'>{{post.title}}</option>
+</select>
+<input type = 'submit' value = 'Add comment'>
+</form>
+
+<h4>Comments</h4>
+<div class = 'row' >
+    <div class = 'col-md-5'>
+        <p><strong>Content</strong></p>
+    </div>
+    <div class = 'col-md-2'>
+        <p><strong>Date</strong></p>
+    </div>
+    <div class = 'col-md-3'>
+        <p><strong>Title</strong></p>
+    </div>
+    <div class = 'col-md-2'>
+    </div>
+</div>
+
+{% for comment in post.comment_set.all %}
+
+<div class = 'row'>
+    <div class = 'col-md-5'>
+        <p>{{ comment.content}}</p>
+    </div>
+    <div class = 'col-md-2'>
+        <p>{{ comment.created_at}}</p>
+    </div>
+    <div class = 'col-md-3'>
+        <p>{{ comment.post.title}}</p>
+    </div>
+    <div class = 'col-md-2'>
+    </div>
+
+
+</div>
+
+{% empty %}
+<h3>No comments just yet</h3>
+
+{% endfor %}
+
+<hr/>
+
+
+
+<p><a href="{% url 'blog:list' %}">Back to list</a></p>
+</div>
+{% endblock %}
