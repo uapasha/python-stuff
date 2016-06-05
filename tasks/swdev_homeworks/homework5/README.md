@@ -1,2 +1,7 @@
-# django-stuff
-Miscellaneous small django projects (trivial sites, examples etc.)
+# Homework5
+Модифицировать example project следующим образом:
+- Добавить в модель Person новое поле colleagues (коллеги), которое будет M2M на себя же
+- Добавить новый URL: DOMAIN/modify_person/<persons_short_name>
+- Если персоны с таким persons_short_name не существует - выдавать 404
+- Если существует, нужно дать возможность отредактировать ее, с учетом colleagues, которое должно отображать "виджет" выбора нескольких коллег из уже существующих (можно выбрать от 0 коллег до всех остальных)
+- Предыдущий пункт должен быть реализован на ModelForm
